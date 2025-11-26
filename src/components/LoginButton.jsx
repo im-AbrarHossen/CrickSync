@@ -1,11 +1,15 @@
 import React from 'react';
-import { signIn } from "next-auth/react"
+import { useRouter } from "next/navigation";
 
 const LoginButton = () => {
+    const router = useRouter();
     return (
-        <div>
-            <a className='btn border-none bg-red-700 hover:bg-red-800 transition-colors duration-200 text-sm text-white' onClick={() => signIn()}>LOGIN</a>
-        </div>
+        <button
+            className='btn border-none bg-red-700 hover:bg-red-800 transition-colors duration-200 text-sm text-white'
+            onClick={() => router.push("/authPages/loginPage")}
+        >
+            LOGIN
+        </button>
     );
 };
 

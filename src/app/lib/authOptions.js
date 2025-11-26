@@ -1,5 +1,7 @@
 import dbConnect from "./dbConnect";
 import CredentialsProvider from "next-auth/providers/credentials"
+import bcrypt from "bcryptjs";
+
 
 export const authOptions = {
     providers: [
@@ -36,13 +38,19 @@ export const authOptions = {
                 // return null
                 const { email, password } = credentials;
                 const user = await dbConnect("players").findOne({ email });
-                const isPasswordOK = password == user.password;
-                if (isPasswordOK) {
-                    return user
-                }
-                else {
-                    return null
-                }
+
+                if (!user) throw new Error("No user found with this email");
+
+                const isPasswordOK = await bcrypt.compare(password, user.password);
+                if (!isPasswordOK) throw new Error("Invalid password");
+
+                // Return safe user object
+                return {
+                    id: user._id.toString(),
+                    name: user.name,
+                    email: user.email,
+                    role: user.role
+                };
             }
         })
     ],

@@ -2,11 +2,11 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import LoginButton from './LoginButton';
-import UserInfo from './UserInfo';
+import { useSession } from 'next-auth/react';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
-
+    const { data: session } = useSession();
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 50);
         window.addEventListener('scroll', handleScroll);
@@ -16,8 +16,8 @@ const Navbar = () => {
     return (
         <div
             className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled
-                    ? 'bg-white/70 backdrop-blur-md shadow-sm'
-                    : 'bg-white/10 backdrop-blur-md'
+                ? 'bg-white/70 backdrop-blur-md shadow-sm'
+                : 'bg-white/10 backdrop-blur-md'
                 }`}
         >
             <div className="navbar max-w-7xl mx-auto text-gray-800">
@@ -126,7 +126,11 @@ const Navbar = () => {
 
                 {/* Navbar End */}
                 <div className="navbar-end">
-                    <LoginButton></LoginButton>
+                    {session ? (
+                        <button onClick={() => signOut()} className='btn border-none bg-red-700 hover:bg-red-800 transition-colors duration-200 text-sm text-white'>Logout</button>
+                    ) : (
+                        <LoginButton /> // or link to login page
+                    )}
                 </div>
             </div>
         </div>
