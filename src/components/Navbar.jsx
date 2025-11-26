@@ -128,7 +128,6 @@ const Navbar = () => {
                 <div className="navbar-end">
                     <LoginButton></LoginButton>
                 </div>
-                <UserInfo></UserInfo>
             </div>
         </div>
     );
