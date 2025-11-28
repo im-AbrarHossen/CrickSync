@@ -87,7 +87,7 @@ npm some-command-to-run
 <a href="https://github.com/WalidurTanjim">
 <img src="https://avatars.githubusercontent.com/u/64366750?v=4" width="100px;" alt="WalidurTanjim Profile Picture"/><br>
 <sub>
-<b>Walidur Tanjim</b>
+<b>Wadud</b>
 </sub>
 </a>
 </td>
