@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrickSync - ক্রিকেট অ্যাকাডেমি</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="#home">CrickSync</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link" data-section="home">হোম</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">আমাদের সম্পর্কে</a></li>
+                <li><a href="#courses" class="nav-link" data-section="courses">কোর্সসমূহ</a></li>
+                <li><a href="#gallery" class="nav-link" data-section="gallery">গ্যালারি</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">যোগাযোগ</a></li>
+                <li><a href="#register" class="nav-link" data-section="register">রেজিস্ট্রেশন</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content">
+        <section class="content-section active" id="home">
+            <h1>CrickSync-এ স্বাগতম</h1>
+            <p>বাংলাদেশের সেরা ক্রিকেট অ্যাকাডেমি। এখানে শুরু করুন আপনার ক্রিকেট যাত্রা!</p>
+            <img src="https://via.placeholder.com/800x400?text=CrickSync+Welcome+Banner" alt="Welcome Banner" class="hero-img">
+        </section>
+
+        <section class="content-section" id="about">
+            <h2>আমাদের সম্পর্কে</h2>
+            <p>CrickSync ২০১৫ সাল থেকে ক্রিকেট প্রশিক্ষণ দিয়ে আসছে। আমরা ৫০০+ খেলোয়াড় তৈরি করেছি, যাদের মধ্যে অনেকেই জাতীয় দলে খেলেছে।</p>
+            <ul>
+                <li>প্রতিষ্ঠাতা: কোচ রাহুল দাস</li>
+                <li>অবস্থান: ঢাকা, বাংলাদেশ</li>
+                <li>সদস্য: ৫০০+</li>
+            </ul>
+        </section>
+
+        <section class="content-section" id="courses">
+            <h2>আমাদের কোর্সসমূহ</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>কোর্সের নাম</th>
+                        <th>সময়কাল</th>
+                        <th>ফি</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>বেসিক ক্রিকেট ট্রেনিং</td><td>৩ মাস</td><td>৫,০০০ টাকা</td></tr>
+                    <tr><td>অ্যাডভান্সড ব্যাটিং</td><td>৬ মাস</td><td>১২,০০০ টাকা</td></tr>
+                    <tr><td>ফাস্ট বোলিং মাস্টারক্লাস</td><td>৪ মাস</td><td>১০,০০০ টাকা</td></tr>
+                    <tr><td>অলরাউন্ডার প্রোগ্রাম</td><td>১২ মাস</td><td>২৫,০০০ টাকা</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="content-section" id="gallery">
+            <h2>গ্যালারি</h2>
+            <div class="gallery-grid">
+                <img src="https://via.placeholder.com/300x200?text=Training+Day" alt="Training">
+                <img src="https://via.placeholder.com/300x200?text=Match+Win" alt="Match">
+                <img src="https://via.placeholder.com/300x200?text=Award+Ceremony" alt="Award">
+                <img src="https://via.placeholder.com/300x200?text=Group+Photo" alt="Group">
+            </div>
+        </section>
+
+        <section class="content-section" id="contact">
+            <h2>যোগাযোগ করুন</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="আপনার নাম" required>
+                <input type="email" placeholder="আপনার ইমেইল" required>
+                <textarea placeholder="আপনার বার্তা" rows="5" required></textarea>
+                <button type="submit">মেসেজ পাঠান</button>
+            </form>
+            <p><strong>ফোন:</strong> ০১৭১২-৩৪৫৬৭৮<br><strong>ইমেইল:</strong> info@cricksync.com</p>
+        </section>
+
+        <section class="content-section" id="register">
+            <h2>এখনই রেজিস্ট্রেশন করুন</h2>
+            <form class="register-form">
+                <input type="text" placeholder="পুরো নাম" required>
+                <input type="number" placeholder="বয়স" required>
+                <input type="email" placeholder="ইমেইল" required>
+                <input type="tel" placeholder="মোবাইল নম্বর" required>
+                <select required>
+                    <option value="">কোর্স নির্বাচন করুন</option>
+                    <option>বেসিক ক্রিকেট ট্রেনিং</option>
+                    <option>অ্যাডভান্সড ব্যাটিং</option>
+                    <option>ফাস্ট বোলিং মাস্টারক্লাস</option>
+                </select>
+                <button type="submit">রেজিস্টার করুন</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
