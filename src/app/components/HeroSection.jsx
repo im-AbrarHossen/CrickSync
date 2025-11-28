@@ -3,7 +3,7 @@ import React from 'react';
 const HeroSection = () => {
     return (
         <div>
-            <section className="relative h-[70vh] flex items-center justify-center pt-32 md:pt-10 lg:pt-15">
+            <section className="relative h-[70vh] lg:h-[77vh] flex items-center justify-center pt-10 md:pt-12">
                 {/* Background image with gradient overlay */}
                 <div
                     className="absolute inset-0 bg-cover bg-center"
@@ -32,7 +32,7 @@ const HeroSection = () => {
                     </div>
 
                     {/* Play Button Card */}
-                    <div className="relative w-64 h-40 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-lg">
+                    <div className="relative hidden w-64 h-40 bg-white/10 backdrop-blur-md rounded-2xl md:flex items-center justify-center shadow-lg">
                         <a
                             href='https://youtu.be/UX5CfM3KsH0?si=ZPqODZEviEA7VeBj'
                             target='_blank'

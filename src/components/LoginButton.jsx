@@ -6,7 +6,7 @@ const LoginButton = () => {
     return (
         <button
             className='btn border-none bg-red-700 hover:bg-red-800 transition-colors duration-200 text-sm text-white'
-            onClick={() => router.push("/authPages/loginPage")}
+            onClick={() => router.push("/loginPage")}
         >
             LOGIN
         </button>

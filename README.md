@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center" style="font-weight: bold;">CrickSync🏏</h1>
 
-## Getting Started
+<p align="center">
+<a href="#technologies">Technologies</a>
+<a href="#started">Getting Started</a>
+<a href="#colab">Collaborators</a>
+<a href="#contribute">Contribute</a> 
+</p>
 
-First, run the development server:
+<p align="center">CrickSync aims to build a web-based platform where admins, coaches, and players can
+efficiently manage cricket academy activities. It will feature role-based dashboards, allowing coaches to track performance, players to monitor their progress, and admins to oversee all operations.</p>
+
+<p align="center">
+<a href="https://cricksync.vercel.app/">📱 Visit this Project</a>
+</p>
+
+<h2 id="layout">🎨 Layout</h2>
+
+<p align="center">
+
+<img src="https://i.postimg.cc/DmkBLfs7/Screenshot-2025-04-30-211225.png" alt="Random Image" width="400px">
+<img src="https://i.postimg.cc/qqjvCqW3/Screenshot-2025-04-30-205938.png" alt="Random Image" width="400px">
+<img src="https://i.postimg.cc/PxdHzhWz/Screenshot-2025-04-30-210818.png" alt="Random Image" width="400px">
+</p>
+
+<h2 id="technologies">💻 Technologies</h2>
+
+- React
+- Tailwind CSS
+- Socket.IO
+- TanStack Query
+- Redux Toolkit
+- React Router
+- Axios
+- Firebase
+- Node.js
+- Express.js
+- MongoDB
+- Vite
+- React Toastify
+- Git & GitHub
+
+<h2 id="started">🚀 Getting started</h2>
+
+Here we describe how to run your project locally
+
+<h3>Prerequisites</h3>
+
+Here we list all prerequisites necessary for running our project. For example:
+
+- [NodeJS](https://github.com/)
+- [Git 2](https://github.com)
+
+<h3>Cloning</h3>
+
+How to clone our project
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/WalidurTanjim/agroSphere.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<h3>Starting</h3>
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+How to start our project
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cd project-name
+npm some-command-to-run
+```
 
-## Learn More
+<h2 id="colab">🤝 Collaborators</h2>
 
-To learn more about Next.js, take a look at the following resources:
+<p>Special thank you for all people that contributed for this project.</p>
+<table>
+<tr>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<td align="center">
+<a href="https://github.com/im-AbrarHossen">
+<img src="https://avatars.githubusercontent.com/u/141876643?v=4" width="100px;" alt="Abrar Profile Picture"/><br>
+<sub>
+<b>Md. Abrar Hossen Badhon</b>
+</sub>
+</a>
+</td>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<td align="center">
+<a href="https://github.com/WalidurTanjim">
+<img src="https://avatars.githubusercontent.com/u/64366750?v=4" width="100px;" alt="WalidurTanjim Profile Picture"/><br>
+<sub>
+<b>Walidur Tanjim</b>
+</sub>
+</a>
+</td>
 
-## Deploy on Vercel
+<td align="center">
+<a href="https://github.com/SaikatAhmed78">
+<img src="https://avatars.githubusercontent.com/u/174275745?v=4" width="100px;" alt="Saikat Profile Picture"/><br>
+<sub>
+<b>Saikat Ahmed</b>
+</sub>
+</a>
+</td>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<td align="center">
+<a href="https://github.com/azim622">
+<img src="https://avatars.githubusercontent.com/u/155179920?v=4" width="100px;" alt="Azim Profile Picture"/><br>
+<sub>
+<b>Md. Fazle Azim</b>
+</sub>
+</a>
+</td>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<td align="center">
+<a href="https://github.com/Md-Mueid-Mia">
+<img src="https://avatars.githubusercontent.com/u/170161843?v=4" width="100px;" alt="Mueid Profile Picture"/><br>
+<sub>
+<b>Md Mueid Mia</b>
+</sub>
+</a>
+</td>
+
+</tr>
+</table>
+
+<h2 id="contribute">📫 Contribute</h2>
+
+Here we will explain how other developers can contribute to your project. For example, explaining how can create their branches, which patterns to follow and how to open an pull request
+
+1. `git clone https://github.com/WalidurTanjim/agroSphere.git`
+2. `git checkout -b feature/NAME`
+3. Follow commit patterns
+4. Open a Pull Request explaining the problem solved or feature made, if exists, append screenshot of visual modifications and wait for the review!
+
+<h3>Documentations that might help</h3>
+
+[📝 How to create a Pull Request](https://www.atlassian.com/br/git/tutorials/making-a-pull-request)
+
+[💾 Commit pattern](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
