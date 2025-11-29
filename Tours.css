@@ -1,0 +1,130 @@
+/* tours.css – Bangladesh Cricket Inspired Design */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    color: #000000;
+    line-height: 1.7;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #003087;                     /* Deep Blue – Bangladesh Flag */
+    margin: 40px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.intro-section {
+    max-width: 1000px;
+    margin: 0 auto 80px;
+    background: white;
+    padding: 45px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 50, 135, 0.1);
+    border-left: 8px solid #d71e26;     /* Red stripe – Bangladesh Flag */
+}
+
+.tour-benefits {
+    list-style: disc inside;
+    margin: 35px 0;
+    font-size: 1.15rem;
+    padding-left: 20px;
+}
+
+.tour-benefits li {
+    margin: 18px 0;
+    padding-left: 10px;
+}
+
+.highlight-quote {
+    font-size: 1.4rem;
+    text-align: center;
+    background: linear-gradient(135deg, #003087, #d71e26);
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 40px;
+    font-weight: 600;
+}
+
+/* UPCOMING TOURS GRID */
+.upcoming-tours {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.upcoming-tours h1 {
+    color: #d71e26;                     /* Red for heading */
+    margin-bottom: 50px;
+}
+
+.tours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+    padding: 20px;
+}
+
+.tour-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 50, 135, 0.15);
+    text-align: center;
+    transition: transform 0.3s ease;
+    border-top: 6px solid #003087;
+}
+
+.tour-card:hover {
+    transform: translateY(-12px);
+}
+
+.tour-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.tour-card h3 {
+    font-size: 1.6rem;
+    color: #003087;
+    margin: 20px 0 10px;
+}
+
+.tour-card p {
+    padding: 0 20px;
+    color: #333;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+}
+
+.join-btn {
+    display: inline-block;
+    background: #d71e26;               /* Bangladesh Red */
+    color: white;
+    font-weight: bold;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(215, 30, 38, 0.4);
+}
+
+.join-btn:hover {
+    background: #003087;               /* Deep Blue on hover */
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    .intro-section { padding: 30px; }
+    .highlight-quote { font-size: 1.2rem; }
+    .tours-grid { grid-template-columns: 1fr; }
+}
