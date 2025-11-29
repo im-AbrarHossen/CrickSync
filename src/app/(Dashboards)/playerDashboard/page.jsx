@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function playerDashboard() {
+export default function PlayerDashboard() {
   return (
     <div>playerDashboard</div>
   )

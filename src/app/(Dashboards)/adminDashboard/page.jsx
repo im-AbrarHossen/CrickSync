@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function adminDashboard() {
+export default function AdminDashboard() {
   return (
     <div>adminDashboard</div>
   )
