@@ -1,0 +1,145 @@
+/* blogs.css – Bangladesh Blue-Red-White Theme */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8fbff;
+    color: #000000;
+    line-height: 1.8;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Hero Section */
+.blogs-hero {
+    background: linear-gradient(rgba(0, 48, 135, 0.85), rgba(215, 30, 38, 0.9)),
+                url('Member_Photos/hero-blog.jpg') center/cover no-repeat;
+    height: 45vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 60px;
+    border-bottom: 8px solid #d71e26;
+}
+
+.hero-overlay h1 {
+    font-size: 3.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.hero-overlay p {
+    font-size: 1.4rem;
+    opacity: 0.95;
+}
+
+/* Blog Grid */
+.blogs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 35px;
+    margin-bottom: 60px;
+}
+
+.blog-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 48, 135, 0.12);
+    transition: all 0.3s ease;
+    border-top: 5px solid #d71e26;
+}
+
+.blog-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 48, 135, 0.2);
+}
+
+.blog-image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.blog-content {
+    padding: 25px;
+}
+
+.blog-date {
+    display: block;
+    color: #003087;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.blog-content h3 {
+    font-size: 1.5rem;
+    color: #003087;
+    margin: 12px 0;
+    line-height: 1.4;
+}
+
+.blog-content p {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.read-more {
+    color: #d71e26;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.05rem;
+    transition: color 0.3s;
+}
+
+.read-more:hover {
+    color: #003087;
+}
+
+/* Load More Button */
+.load-more {
+    text-align: center;
+    margin: 60px 0;
+}
+
+.load-btn {
+    display: inline-block;
+    background: #d71e26;
+    color: white;
+    padding: 14px 45px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 8px 20px rgba(215,30,38,0.4);
+    transition: all 0.3s;
+}
+
+.load-btn:hover {
+    background: #003087;
+    transform: translateY(-5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-overlay h1 { font-size: 2.6rem; }
+    .hero-overlay p { font-size: 1.2rem; }
+    .blogs-grid { grid-template-columns: 1fr; }
+    .blog-content { padding: 20px; }
+}
