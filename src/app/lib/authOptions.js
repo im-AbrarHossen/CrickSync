@@ -58,12 +58,18 @@ export const authOptions = {
         async session({ session, token, user }) {
             if (token) {
                 session.user.email = token.email
+                session.user.name = token.name;
+                session.user.role = token.role;       // ✅ add role
+                session.user.image = token.image || null; // optional default
             }
             return session
         },
         async jwt({ token, user, account, profile, isNewUser }) {
             if (user) {
                 token.email = user.email
+                token.name = user.name;
+                token.role = user.role;               // ✅ add role
+                token.image = user.image || null;     // optional default
             }
             return token
         }

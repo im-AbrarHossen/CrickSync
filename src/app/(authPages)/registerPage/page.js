@@ -1,9 +1,11 @@
 "use client";
 import { useState } from "react";
 import { registerUser } from "@/app/actions/auth/registerUser";
+import { signIn } from "next-auth/react";
 
 export default function RegisterPage() {
     const [showModal, setShowModal] = useState(false);
+    const [credentials, setCredentials] = useState({ email: "", password: "" });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -16,7 +18,21 @@ export default function RegisterPage() {
         const result = await registerUser(payload);
 
         if (result.success) {
-            setShowModal(true);
+            // Save credentials for auto-login
+            setCredentials({ email, password });
+
+            // Auto-login
+            const loginResult = await signIn("credentials", {
+                redirect: false,
+                email,
+                password,
+            });
+
+            if (loginResult?.ok) {
+                setShowModal(true);
+            } else {
+                alert("Registration succeeded, but login failed!");
+            }
         } else {
             alert(result.message || "Registration failed!");
         }
