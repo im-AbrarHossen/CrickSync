@@ -6,9 +6,9 @@ import Profile from './dashboardComponents/Profile';
 import Settings from './dashboardComponents/Settings';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import PlayerDashboard from './playerDashboard/page';
-import AdminDashboard from './adminDashboard/page';
-import CoachDashboard from './coachDashboard/page';
+import PlayerDashboard from './player-dashboard/page';
+import AdminDashboard from './admin-dashboard/page';
+import CoachDashboard from './coach-dashboard/page';
 
 export default function DashboardLayout() {
   const [isOpen, setIsOpen] = useState(false);

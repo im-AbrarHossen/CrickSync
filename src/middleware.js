@@ -3,42 +3,31 @@ import { getToken } from "next-auth/jwt";
 
 export async function middleware(req) {
     const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-
     const { pathname } = req.nextUrl;
 
-    // 1️⃣ Prevent logged-in users from visiting loginPage/registerPage
+    // 1️⃣ Logged-in users trying to access login/register → redirect to their dashboard
     if (token && (pathname === "/loginPage" || pathname === "/registerPage")) {
-        // Redirect based on role
-        if (token.role === "admin") {
-            return NextResponse.redirect(new URL("/adminDashboard", req.url));
+        return NextResponse.redirect(
+            new URL(`/${token.role}-dashboard`, req.url)
+        );
+    }
+
+    // 2️⃣ Unauthenticated users trying to access any dashboard → redirect to login
+    if (!token && pathname.endsWith("-dashboard")) {
+        return NextResponse.redirect(new URL("/loginPage", req.url));
+    }
+
+    // 3️⃣ Role-based protection
+    if (token) {
+        if (pathname.startsWith("/admin-dashboard") && token.role !== "admin") {
+            return NextResponse.redirect(new URL("/unauthorized", req.url));
         }
-        if (token.role === "coach") {
-            return NextResponse.redirect(new URL("/coachDashboard", req.url));
+        if (pathname.startsWith("/coach-dashboard") && token.role !== "coach") {
+            return NextResponse.redirect(new URL("/unauthorized", req.url));
         }
-        if (token.role === "player") {
-            return NextResponse.redirect(new URL("/playerDashboard", req.url));
+        if (pathname.startsWith("/player-dashboard") && token.role !== "player") {
+            return NextResponse.redirect(new URL("/unauthorized", req.url));
         }
-    }
-
-    // If no token & trying to access dashboard → redirect to login
-    if (!token &&
-        (pathname.startsWith("/adminDashboard") ||
-            pathname.startsWith("/coachDashboard") ||
-            pathname.startsWith("/playerDashboard"))) {
-        return NextResponse.redirect(new URL("/login", req.url));
-    }
-
-    // Role-based protection:
-    if (pathname.startsWith("/adminDashboard") && token.role !== "admin") {
-        return NextResponse.redirect(new URL("/unauthorized", req.url));
-    }
-
-    if (pathname.startsWith("/coachDashboard") && token.role !== "coach") {
-        return NextResponse.redirect(new URL("/unauthorized", req.url));
-    }
-
-    if (pathname.startsWith("/playerDashboard") && token.role !== "player") {
-        return NextResponse.redirect(new URL("/unauthorized", req.url));
     }
 
     return NextResponse.next();
@@ -48,8 +37,8 @@ export const config = {
     matcher: [
         "/loginPage",
         "/registerPage",
-        "/adminDashboard/:path*",
-        "/coachDashboard/:path*",
-        "/playerDashboard/:path*",
+        "/admin-dashboard/:path*",
+        "/coach-dashboard/:path*",
+        "/player-dashboard/:path*",
     ],
 };
