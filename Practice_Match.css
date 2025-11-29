@@ -1,0 +1,140 @@
+/* Practice_Match.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: whitesmoke;
+    color: black;
+    line-height: 1.7;
+    padding: 40px 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: blue;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.content {
+    max-width: 900px;
+    margin: 0 auto 70px;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.content p {
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+}
+
+.practice-list {
+    list-style: disc inside;
+    text-align: left;
+    display: inline-block;
+    margin: 30px 0;
+    font-size: 1.15rem;
+}
+
+.practice-list li {
+    margin: 12px 0;
+    padding-left: 10px;
+}
+
+
+/* WHAT MAKE US DIFFERENT - Full Background Section */
+.different-section {
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.8)),
+                url('Member_Photos/Practice.png') center/cover no-repeat;
+    background-attachment: fixed;
+    color: white;
+    padding: 100px 20px;
+    margin: 50px 0;
+    border-radius: 15px;
+}
+
+.different-overlay {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.different-section h2 {
+    font-size: 3.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+}
+
+.different-list {
+    counter-reset: item;
+    list-style: none;
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+.different-list li {
+    margin-bottom: 28px;
+    padding-left: 60px;
+    position: relative;
+}
+
+.different-list li:before {
+    content: counter(item);
+    counter-increment: item;
+    position: absolute;
+    left: 0;
+    top: -8px;
+    background: red;
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+    
+}
+
+.different-list strong {
+    color: red;
+    font-size: 1.3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    .content { padding: 25px; }
+    .different-section { 
+        padding: 80px 15px; 
+        background-attachment: scroll;
+    }
+    .different-section h2 { font-size: 2.4rem; }
+    .different-list li { 
+        padding-left: 50px; 
+        font-size: 1.1rem;
+    }
+    .different-list li:before {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+}
