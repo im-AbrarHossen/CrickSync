@@ -1,0 +1,50 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: black;
+}
+
+
+h1 {
+    color: blue;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: blue;
+    margin-top: 30px;
+}
+
+p {
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.team-member {
+    display: inline-block;
+    text-align: center;
+    margin: 20px;
+}
+
+.team-member img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.team-member p {
+    margin: 5px 0 0;
+    font-weight: bold;
+}
+
+.team-member span {
+    display: block;
+    font-weight: normal;
+    color: black;
+}

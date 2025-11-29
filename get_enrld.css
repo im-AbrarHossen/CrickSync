@@ -1,0 +1,170 @@
+/* styles.css – Complete styling for both sections */
+
+* {
+    box-sizing: border-box;
+}
+
+h1{
+    color:blue;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f9f9f9;
+    color: black;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* ====================== ENROLL SECTION ====================== */
+.enroll-section {
+    background-color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 4px solid red;
+    border-bottom: 1px solid #eee;
+}
+
+.enroll-section h2 {
+    font-size: 2.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    color: blue;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto 50px;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    font-size: 1.1rem;
+    min-width: 250px;
+}
+
+.info-item i {
+    font-size: 2rem;
+    color: red;
+}
+
+.info-item strong {
+    display: block;
+    margin-bottom: 5px;
+    color: blue;
+}
+
+.social-icons {
+    margin-top: 30px;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background: #ddd;
+    color: #666;
+    line-height: 45px;
+    border-radius: 50%;
+    margin: 0 10px;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: red;
+    color: white;
+    transform: translateY(-5px);
+}
+
+/* ====================== CONTACT FORM SECTION ====================== */
+.contact-form-section {
+    max-width: 750px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.contact-form-section h2 {
+    font-size: 2.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 10px;
+    color: blue;
+}
+
+.form-note {
+    text-align: center;
+    color: black;
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.required {
+    color: red;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fdfdfd;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: red;
+    box-shadow: 0 0 8px rgba(255, 165, 0, 0.2);
+}
+
+.submit-btn {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: red;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    .enroll-section h2,
+    .contact-form-section h2 {
+        font-size: 2rem;
+    }
+}
