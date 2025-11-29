@@ -5,13 +5,20 @@ import Sidebar from './dashboardComponents/Sidebar';
 import Home from '../page';
 import Profile from './dashboardComponents/Profile';
 import Settings from './dashboardComponents/Settings';
-import Logout from './dashboardComponents/Logout';
+import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export default function DashboardLayout() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState('home');
+  const router = useRouter();
 
   const toggleSidebar = () => setIsOpen(!isOpen);
+
+  const handleLogout = async () => {
+    await signOut({ redirect: false }); // sign out without auto redirect
+    router.push('/'); // redirect to home page
+  };
 
   // Render main content based on active menu
   const renderContent = () => {
@@ -23,7 +30,8 @@ export default function DashboardLayout() {
       case 'settings':
         return <Settings />;
       case 'logout':
-        return <Logout />;
+        handleLogout(); // call logout immediately
+        return null; // nothing to render
       default:
         return <Home />;
     }
