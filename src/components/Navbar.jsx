@@ -64,30 +64,30 @@ const Navbar = () => {
                                 tabIndex="-1"
                                 className="menu menu-sm dropdown-content bg-white/80 backdrop-blur-md text-black rounded-box z-1 mt-3 w-52 p-2 shadow"
                             >
-                                <li><a>Home</a></li>
+                                <li><Link href='/'>Home</Link></li>
                                 <li>
                                     <a>Who We Are</a>
                                     <ul className="p-2">
-                                        <li><a>About Us</a></li>
-                                        <li><a>Our Management</a></li>
+                                        <li><Link href='/AboutUs'>About Us</Link></li>
+                                        <li><Link href='/OurManagement'>Our Management</Link></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a>Our Programs</a>
                                     <ul className="p-2">
-                                        <li><a>Practice Sessions and Matches</a></li>
-                                        <li><a>Camp with Certified Coaches</a></li>
-                                        <li><a>Domestic & International Tours</a></li>
-                                        <li><a>Advance Training Program</a></li>
+                                        <li><Link href='/Practice-Sessions'>Practice Sessions and Matches</Link></li>
+                                        <li><Link href='/Camp-with-Certified-Coaches'>Camp with Certified Coaches</Link></li>
+                                        <li><Link href=''>Domestic & International Tours</Link></li>
+                                        <li><Link href='/AdvanceTrainingProgram'>Advance Training Program</Link></li>
                                     </ul>
                                 </li>
-                                <li><a>Our Centres</a></li>
-                                <li><a>Blogs & Insights</a></li>
+                                <li><Link href='/OurCenters'>Our Centres</Link></li>
+                                <li><Link href=''>Blogs & Insights</Link></li>
                                 <li>
                                     <a>Contact Us</a>
                                     <ul className="p-2">
-                                        <li><a>Get Enrolled</a></li>
-                                        <li><a>Franchise & Partner Opportunities</a></li>
+                                        <li><Link href='/Get-Enrolled'>Get Enrolled</Link></li>
+                                        <li><Link href='/Franchise-and-Partner-Opportunities'>Franchise & Partner Opportunities</Link></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -110,8 +110,8 @@ const Navbar = () => {
                                 <details>
                                     <summary>Who We Are</summary>
                                     <ul className="p-2 bg-white/80 backdrop-blur-md">
-                                        <li><a>About Us</a></li>
-                                        <li><a>Our Management</a></li>
+                                        <li><Link href='/AboutUs'>About Us</Link></li>
+                                        <li><Link href='/OurManagement'>Our Management</Link></li>
                                     </ul>
                                 </details>
                             </li>
@@ -119,21 +119,21 @@ const Navbar = () => {
                                 <details>
                                     <summary>Our Programs</summary>
                                     <ul className="p-2 bg-white/80 backdrop-blur-md">
-                                        <li><a>Practice Sessions & Matches</a></li>
-                                        <li><a>Camp with Certified Coaches</a></li>
-                                        <li><a>Domestic & International Tours</a></li>
-                                        <li><a>Advance Training Program</a></li>
+                                        <li><Link href='/Practice-Sessions'>Practice Sessions and Matches</Link></li>
+                                        <li><Link href='/Camp-with-Certified-Coaches'>Camp with Certified Coaches</Link></li>
+                                        <li><Link href='/Domestic-and-International-Tours'>Domestic & International Tours</Link></li>
+                                        <li><Link href='/AdvanceTrainingProgram'>Advance Training Program</Link></li>
                                     </ul>
                                 </details>
                             </li>
-                            <li><a>Our Centres</a></li>
-                            <li><a>Blogs & Insights</a></li>
+                            <li><Link href='/OurCenters'>Our Centres</Link></li>
+                            <li><Link href='/Blogs-and-Insights'>Blogs & Insights</Link></li>
                             <li>
                                 <details>
                                     <summary>Contact Us</summary>
                                     <ul className="p-2 bg-white/80 backdrop-blur-md">
-                                        <li><a>Get Enrolled</a></li>
-                                        <li><a>Franchise & Partner Opportunities</a></li>
+                                        <li><Link href='/Get-Enrolled'>Get Enrolled</Link></li>
+                                        <li><Link href='/Franchise-and-Partner-Opportunities'>Franchise & Partner Opportunities</Link></li>
                                     </ul>
                                 </details>
                             </li>
