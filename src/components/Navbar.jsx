@@ -68,20 +68,20 @@ const Navbar = () => {
                                 <li>
                                     <a>Who We Are</a>
                                     <ul className="p-2">
-                                        <li><a>About Us</a></li>
-                                        <li><a>Our Management</a></li>
+                                        <li><Link href='/AboutUs'>About Us</Link></li>
+                                        <li><Link href='/OurManagement'>Our Management</Link></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a>Our Programs</a>
                                     <ul className="p-2">
-                                        <li><a>Practice Sessions and Matches</a></li>
-                                        <li><a>Camp with Certified Coaches</a></li>
+                                        <li><Link href='/Practice-Sessions'>Practice Sessions and Matches</Link></li>
+                                        <li><Link href='/Camp-with-Certified-Coaches'>Camp with Certified Coaches</Link></li>
                                         <li><a>Domestic & International Tours</a></li>
-                                        <li><a>Advance Training Program</a></li>
+                                        <li><Link href='/AdvanceTrainingProgram'>Advance Training Program</Link></li>
                                     </ul>
                                 </li>
-                                <li><a>Our Centres</a></li>
+                                <li><Link href='/OurCenters'>Our Centres</Link></li>
                                 <li><a>Blogs & Insights</a></li>
                                 <li>
                                     <a>Contact Us</a>
@@ -110,8 +110,8 @@ const Navbar = () => {
                                 <details>
                                     <summary>Who We Are</summary>
                                     <ul className="p-2 bg-white/80 backdrop-blur-md">
-                                        <li><a>About Us</a></li>
-                                        <li><a>Our Management</a></li>
+                                        <li><Link href='/AboutUs'>About Us</Link></li>
+                                        <li><Link href='/OurManagement'>Our Management</Link></li>
                                     </ul>
                                 </details>
                             </li>
@@ -119,14 +119,14 @@ const Navbar = () => {
                                 <details>
                                     <summary>Our Programs</summary>
                                     <ul className="p-2 bg-white/80 backdrop-blur-md">
-                                        <li><a>Practice Sessions & Matches</a></li>
-                                        <li><a>Camp with Certified Coaches</a></li>
+                                        <li><Link href='/Practice-Sessions'>Practice Sessions and Matches</Link></li>
+                                        <li><Link href='/Camp-with-Certified-Coaches'>Camp with Certified Coaches</Link></li>
                                         <li><a>Domestic & International Tours</a></li>
-                                        <li><a>Advance Training Program</a></li>
+                                        <li><Link href='/AdvanceTrainingProgram'>Advance Training Program</Link></li>
                                     </ul>
                                 </details>
                             </li>
-                            <li><a>Our Centres</a></li>
+                            <li><Link href='/OurCenters'>Our Centres</Link></li>
                             <li><a>Blogs & Insights</a></li>
                             <li>
                                 <details>
