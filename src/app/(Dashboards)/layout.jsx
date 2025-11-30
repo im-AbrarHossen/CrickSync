@@ -34,7 +34,7 @@ export default function DashboardLayout() {
   }, [session]);
 
   const renderContent = () => {
-    if (!role) return <div>Loading...</div>; // wait for role to load
+    if (!role) return <div>Loading...</div>;
 
     switch (activeMenu) {
       case 'home':
@@ -42,13 +42,33 @@ export default function DashboardLayout() {
         if (role === 'admin') return <AdminDashboard />;
         if (role === 'coach') return <CoachDashboard />;
         return <div>Unauthorized</div>;
+
       case 'profile':
         return <Profile />;
+
       case 'settings':
         return <Settings />;
+
+      /** ADMIN ONLY */
+      case 'create-program':
+        if (role === "admin") {
+          const CreateProgram = require("./admin-dashboard/CreateProgram").default;
+          return <CreateProgram />;
+        }
+        return <div>Unauthorized</div>;
+
+      /** COACH ONLY */
+      case 'players-performance':
+        if (role === "coach") {
+          const PlayersPerformance = require("./coach-dashboard/PlayersPerformance").default;
+          return <PlayersPerformance />;
+        }
+        return <div>Unauthorized</div>;
+
       case 'logout':
         handleLogout();
         return null;
+
       default:
         return <div>Page Not Found</div>;
     }
@@ -61,6 +81,7 @@ export default function DashboardLayout() {
         toggleSidebar={toggleSidebar}
         activeMenu={activeMenu}
         setActiveMenu={setActiveMenu}
+        role={role}
       />
       <main className="flex-1 p-6 ml-20 transition-all duration-300">{renderContent()}</main>
     </div>

@@ -1,15 +1,56 @@
 'use client'
 
 import React from 'react';
-import { FaHome, FaUser, FaCog, FaSignOutAlt, FaBars } from 'react-icons/fa';
+import {
+  FaHome,
+  FaUser,
+  FaCog,
+  FaSignOutAlt,
+  FaBars,
+  FaPlusCircle,
+  FaChartLine
+} from 'react-icons/fa';
 
-export default function Sidebar({ isOpen, toggleSidebar, setActiveMenu, activeMenu }) {
-  const menuItems = [
+export default function Sidebar({
+  isOpen,
+  toggleSidebar,
+  setActiveMenu,
+  activeMenu,
+  role
+}) {
+
+  // Default menu items for all roles
+  let menuItems = [
     { icon: <FaHome />, label: 'Home', key: 'home' },
     { icon: <FaUser />, label: 'Profile', key: 'profile' },
     { icon: <FaCog />, label: 'Settings', key: 'settings' },
-    { icon: <FaSignOutAlt />, label: 'Logout', key: 'logout', color: 'text-red-500' },
   ];
+
+  // Extra menu for ADMIN
+  if (role === 'admin') {
+    menuItems.push({
+      icon: <FaPlusCircle />,
+      label: 'Create Program',
+      key: 'create-program'
+    });
+  }
+
+  // Extra menu for COACH
+  if (role === 'coach') {
+    menuItems.push({
+      icon: <FaChartLine />,
+      label: 'Players Performance',
+      key: 'players-performance'
+    });
+  }
+
+  // Logout for all
+  menuItems.push({
+    icon: <FaSignOutAlt />,
+    label: 'Logout',
+    key: 'logout',
+    color: 'text-red-300'
+  });
 
   return (
     <aside
@@ -26,7 +67,7 @@ export default function Sidebar({ isOpen, toggleSidebar, setActiveMenu, activeMe
         </button>
       </div>
 
-      {/* Brand */}
+      {/* Brand Title (only when open) */}
       {isOpen && (
         <div className="px-6 py-4">
           <h1 className="text-2xl font-bold">MyDashboard</h1>
@@ -39,9 +80,9 @@ export default function Sidebar({ isOpen, toggleSidebar, setActiveMenu, activeMe
           {menuItems.map((item, index) => (
             <li
               key={index}
-              className={`flex items-center gap-3 px-6 py-3 cursor-pointer rounded-lg transition-all ${
-                item.color ? item.color : 'text-white'
-              } ${activeMenu === item.key ? 'bg-red-500' : ''}`}
+              className={`flex items-center gap-3 px-6 py-3 cursor-pointer rounded-lg transition-all
+              ${item.color ? item.color : 'text-white'}
+              ${activeMenu === item.key ? 'bg-red-500' : ''}`}
               onClick={() => setActiveMenu(item.key)}
             >
               <span className="text-lg">{item.icon}</span>
