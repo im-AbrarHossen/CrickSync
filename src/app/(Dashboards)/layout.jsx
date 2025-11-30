@@ -1,31 +1,76 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from './dashboardComponents/Sidebar';
-import Home from '../page';
 import Profile from './dashboardComponents/Profile';
 import Settings from './dashboardComponents/Settings';
-import Logout from './dashboardComponents/Logout';
+import { signOut, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import PlayerDashboard from './player-dashboard/page';
+import AdminDashboard from './admin-dashboard/page';
+import CoachDashboard from './coach-dashboard/page';
 
 export default function DashboardLayout() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState('home');
+  const [role, setRole] = useState(null);
+  const router = useRouter();
+  const { data: session } = useSession();
 
   const toggleSidebar = () => setIsOpen(!isOpen);
 
-  // Render main content based on active menu
+  const handleLogout = async () => {
+    await signOut({ redirect: false });
+    router.push('/');
+  };
+
+  // Set role once session is loaded
+  useEffect(() => {
+    if (session?.user?.role) {
+      setRole(session.user.role);
+      // Optionally, set default active menu based on role
+      setActiveMenu('home');
+    }
+  }, [session]);
+
   const renderContent = () => {
+    if (!role) return <div>Loading...</div>;
+
     switch (activeMenu) {
       case 'home':
-        return <Home />;
+        if (role === 'player') return <PlayerDashboard />;
+        if (role === 'admin') return <AdminDashboard />;
+        if (role === 'coach') return <CoachDashboard />;
+        return <div>Unauthorized</div>;
+
       case 'profile':
         return <Profile />;
+
       case 'settings':
         return <Settings />;
+
+      /** ADMIN ONLY */
+      case 'create-program':
+        if (role === "admin") {
+          const CreateProgram = require("./admin-dashboard/CreateProgram").default;
+          return <CreateProgram />;
+        }
+        return <div>Unauthorized</div>;
+
+      /** COACH ONLY */
+      case 'players-performance':
+        if (role === "coach") {
+          const PlayersPerformance = require("./coach-dashboard/PlayersPerformance").default;
+          return <PlayersPerformance />;
+        }
+        return <div>Unauthorized</div>;
+
       case 'logout':
-        return <Logout />;
+        handleLogout();
+        return null;
+
       default:
-        return <Home />;
+        return <div>Page Not Found</div>;
     }
   };
 
@@ -36,8 +81,8 @@ export default function DashboardLayout() {
         toggleSidebar={toggleSidebar}
         activeMenu={activeMenu}
         setActiveMenu={setActiveMenu}
+        role={role}
       />
-
       <main className="flex-1 p-6 ml-20 transition-all duration-300">{renderContent()}</main>
     </div>
   );

@@ -37,31 +37,51 @@ export const authOptions = {
                 // // Return null if user data could not be retrieved
                 // return null
                 const { email, password } = credentials;
-                const user = await dbConnect("players").findOne({ email });
+                const usersCollection = dbConnect("players");
+                const user = await usersCollection.findOne({ email });
 
                 if (!user) throw new Error("No user found with this email");
 
                 const isPasswordOK = await bcrypt.compare(password, user.password);
                 if (!isPasswordOK) throw new Error("Invalid password");
 
+                // ✅ Update lastLogin timestamp
+                await usersCollection.updateOne(
+                    { email },
+                    { $set: { lastLogin: new Date() } }
+                );
+
                 // Return safe user object
                 return {
                     id: user._id.toString(),
                     name: user.name,
                     email: user.email,
-                    role: user.role
+                    role: user.role,
+                    image: user.image || null,
+                    lastLogin: new Date() // send to session token
                 };
             }
         })
     ],
     callbacks: {
         async session({ session, token, user }) {
-            if (token) {
-                session.user.email = token.email
-                session.user.name = token.name;
-                session.user.role = token.role;       // ✅ add role
-                session.user.image = token.image || null; // optional default
+            // Connect to MongoDB
+            const usersCollection = await dbConnect("players");
+
+            // Get latest user from DB
+            const dbUser = await usersCollection.findOne({ email: token.email });
+
+            if (dbUser) {
+                session.user = {
+                    id: dbUser._id.toString(),
+                    name: dbUser.name,
+                    email: dbUser.email,
+                    role: dbUser.role,
+                    image: dbUser.image || '/assets/images/default-avatar.webp',
+                    lastLogin: dbUser.lastLogin || null
+                };
             }
+
             return session
         },
         async jwt({ token, user, account, profile, isNewUser }) {
@@ -70,6 +90,7 @@ export const authOptions = {
                 token.name = user.name;
                 token.role = user.role;               // ✅ add role
                 token.image = user.image || null;     // optional default
+                token.lastLogin = user.lastLogin || new Date();
             }
             return token
         }

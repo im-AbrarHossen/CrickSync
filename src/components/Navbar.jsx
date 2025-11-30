@@ -7,7 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
     const router = useRouter();
     // Default avatar if user has no image
     const avatarUrl = session?.user?.image || "/assets/images/default-avatar.webp";
@@ -21,14 +21,14 @@ const Navbar = () => {
     const goToDashboard = () => {
         if (!session?.user?.role) return;
         const role = session.user.role;
-        if (role === 'admin') router.push('/adminDashboard');
-        else if (role === 'coach') router.push('/coachDashboard');
-        else router.push('/playerDashboard');
+        if (role === 'admin') router.push('/admin-dashboard');
+        else if (role === 'coach') router.push('/coach-dashboard');
+        else router.push('/player-dashboard');
     };
 
     {/* Navigation Path Control */ }
     const pathname = usePathname();
-    if (!pathname.includes("Dashboard")) {
+    if (!pathname.includes("dashboard")) {
         return (
             <div
                 className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled
@@ -141,25 +141,17 @@ const Navbar = () => {
                     </div>
 
                     {/* Navbar End */}
-                    {/* <div className="navbar-end">
-                        {session ? (
-                            <button onClick={() => signOut()} className='btn border-none bg-red-700 hover:bg-red-800 transition-colors duration-200 text-sm text-white'>Logout</button>
-                        ) : (
-                            <LoginButton /> // or link to login page
-                        )}
-                    </div>*/}
                     <div className="navbar-end">
-                        {session ? (
+                        {status === 'loading' ? (
+                            <div className="w-10 h-10 rounded-full bg-gray-200 animate-pulse"></div>
+                        ) : session ? (
                             <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
                                         <img src={avatarUrl} alt="User Avatar" />
                                     </div>
                                 </label>
-                                <ul
-                                    tabIndex={0}
-                                    className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-white rounded-box w-52"
-                                >
+                                <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-white rounded-box w-52">
                                     <li>
                                         <button onClick={goToDashboard}>Dashboard</button>
                                     </li>
@@ -169,7 +161,7 @@ const Navbar = () => {
                                 </ul>
                             </div>
                         ) : (
-                            <LoginButton></LoginButton>
+                            <LoginButton />
                         )}
                     </div>
                 </div>
