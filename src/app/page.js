@@ -1,5 +1,7 @@
 import Link from "next/link";
 import HeroSection from "./components/HeroSection";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 export default function Home() {
   const practiceItems = [
@@ -217,9 +219,15 @@ export default function Home() {
         <section className="text-center py-10">
           <h3 className="text-2xl font-bold text-blue-800 mb-4 uppercase">Follow Us</h3>
           <div className="flex justify-center gap-6">
-            <a href="#" className="w-12 h-12 bg-gray-300 text-white rounded-full flex items-center justify-center text-xl hover:bg-red-600 transition"><i className="fab fa-facebook-f"></i></a>
-            <a href="#" className="w-12 h-12 bg-gray-300 text-white rounded-full flex items-center justify-center text-xl hover:bg-blue-800 transition"><i className="fab fa-twitter"></i></a>
-            <a href="#" className="w-12 h-12 bg-gray-300 text-white rounded-full flex items-center justify-center text-xl hover:bg-red-600 transition"><i className="fab fa-instagram"></i></a>
+            <a href="#" className="w-12 h-12 bg-gray-300 text-white rounded-full flex items-center justify-center text-xl hover:bg-red-600 transition">
+              <FontAwesomeIcon icon={faFacebookF} />
+            </a>
+            <a href="#" className="w-12 h-12 bg-gray-300 text-white rounded-full flex items-center justify-center text-xl hover:bg-blue-800 transition">
+              <FontAwesomeIcon icon={faTwitter} />
+            </a>
+            <a href="#" className="w-12 h-12 bg-gray-300 text-white rounded-full flex items-center justify-center text-xl hover:bg-red-600 transition">
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
           </div>
         </section>
 
