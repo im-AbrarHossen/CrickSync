@@ -82,7 +82,7 @@ const Navbar = () => {
                                     </ul>
                                 </li>
                                 <li><Link href='/OurCenters'>Our Centres</Link></li>
-                                <li><Link href=''>Blogs & Insights</Link></li>
+                                <li><Link href='/Blogs-and-Insights'>Blogs & Insights</Link></li>
                                 <li>
                                     <a>Contact Us</a>
                                     <ul className="p-2">
