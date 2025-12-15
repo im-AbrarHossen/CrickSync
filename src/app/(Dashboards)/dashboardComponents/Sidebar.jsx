@@ -30,8 +30,8 @@ export default function Sidebar({
   if (role === 'admin') {
     menuItems.push({
       icon: <FaPlusCircle />,
-      label: 'Create Program',
-      key: 'create-program'
+      label: 'Admit Player',
+      key: 'admission'
     });
   }
 

@@ -9,6 +9,11 @@ import { useRouter } from 'next/navigation';
 import PlayerDashboard from './player-dashboard/page';
 import AdminDashboard from './admin-dashboard/page';
 import CoachDashboard from './coach-dashboard/page';
+import AdmissionForm from './admin-dashboard/AdmissionForm';
+import PlayersPerformance from './coach-dashboard/PlayersPerformance';
+import PlayersPage from './admin-dashboard/PlayersPage';
+import CoachesPage from './admin-dashboard/CoachesPage';
+import AdmissionsPage from './admin-dashboard/AdmissionsPage';
 
 export default function DashboardLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +44,7 @@ export default function DashboardLayout() {
     switch (activeMenu) {
       case 'home':
         if (role === 'player') return <PlayerDashboard />;
-        if (role === 'admin') return <AdminDashboard />;
+        if (role === 'admin') return <AdminDashboard setActiveMenu={setActiveMenu} />;
         if (role === 'coach') return <CoachDashboard />;
         return <div>Unauthorized</div>;
 
@@ -50,20 +55,25 @@ export default function DashboardLayout() {
         return <Settings />;
 
       /** ADMIN ONLY */
-      case 'create-program':
-        if (role === "admin") {
-          const CreateProgram = require("./admin-dashboard/CreateProgram").default;
-          return <CreateProgram />;
-        }
-        return <div>Unauthorized</div>;
+      case 'admission':
+        return role === 'admin'
+          ? <AdmissionForm />
+          : <div>Unauthorized</div>;
+
+      case 'players':
+        return role === 'admin' ? <PlayersPage /> : <div>Unauthorized</div>;
+
+      case 'coaches':
+        return role === 'admin' ? <CoachesPage /> : <div>Unauthorized</div>;
+
+      case 'admissions':
+        return role === 'admin' ? <AdmissionsPage /> : <div>Unauthorized</div>;
 
       /** COACH ONLY */
       case 'players-performance':
-        if (role === "coach") {
-          const PlayersPerformance = require("./coach-dashboard/PlayersPerformance").default;
-          return <PlayersPerformance />;
-        }
-        return <div>Unauthorized</div>;
+        return role === 'coach'
+          ? <PlayersPerformance />
+          : <div>Unauthorized</div>;
 
       case 'logout':
         handleLogout();
