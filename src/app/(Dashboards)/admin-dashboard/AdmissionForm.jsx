@@ -7,7 +7,7 @@ export default function AdmissionForm() {
     const [player, setPlayer] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [coaches, setCoaches] = useState([]);
-    const [coach, setCoach] = useState("");
+    const [coach, setCoach] = useState({ name: "", email: "" });
     const [practiceTime, setPracticeTime] = useState("");
 
     // Fetch all coaches on mount
@@ -57,7 +57,8 @@ export default function AdmissionForm() {
             player_id: crypto.randomUUID(),
             name: player.name,
             email: player.email,
-            coach_name: coach,
+            coach_name: coach.name,
+            coach_email: coach.email, // Add this field
             practice_time: practiceTime,
             start_date: new Date().toISOString().split("T")[0],
         };
@@ -121,16 +122,30 @@ export default function AdmissionForm() {
                             className="border p-2 w-full mb-2 bg-gray-100"
                         />
 
-                        {/* Coach Dropdown */}
+                        {/* Coach Name Dropdown */}
                         <select
-                            value={coach}
-                            onChange={(e) => setCoach(e.target.value)}
+                            value={coach.name || ""}
+                            onChange={(e) => setCoach(prev => ({ ...prev, name: e.target.value }))}
                             className="border p-2 w-full mb-2"
                         >
-                            <option value="">Select Coach</option>
+                            <option value="">Select Coach Name</option>
                             {coaches.map((c) => (
                                 <option key={c.id} value={c.name}>
                                     {c.name}
+                                </option>
+                            ))}
+                        </select>
+
+                        {/* Coach Email Dropdown */}
+                        <select
+                            value={coach.email || ""}
+                            onChange={(e) => setCoach(prev => ({ ...prev, email: e.target.value }))}
+                            className="border p-2 w-full mb-2"
+                        >
+                            <option value="">Select Coach Email</option>
+                            {coaches.map((c) => (
+                                <option key={c.id} value={c.email}>
+                                    {c.email}
                                 </option>
                             ))}
                         </select>
