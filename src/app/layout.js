@@ -27,6 +27,8 @@ export default function RootLayout({ children }) {
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <Navbar></Navbar>
+          {/* Modal root for react-modal */}
+          <div id="modal-root"></div>
           {children}
           <Footer></Footer>
         </body>
