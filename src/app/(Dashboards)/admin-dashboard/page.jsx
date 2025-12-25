@@ -26,22 +26,54 @@ export default function AdminDashboard({ setActiveMenu }) {
   }, [])
 
   const fetchAll = async () => {
-    const [players, admissions, coaches, chart] = await Promise.all([
-      fetch('http://localhost:8000/players').then(r => r.json()),
-      fetch('http://localhost:8000/admissions').then(r => r.json()),
-      fetch('http://localhost:8000/coaches').then(r => r.json()),
-      fetch('http://localhost:8000/admissions-stats').then(r => r.json()),
-    ])
+    try {
+      // 1. ডাটা ফেচ করা
+      const [playersRes, admissionsRes, coachesRes] = await Promise.all([
+        fetch('http://localhost:8000/players').then(r => r.json()),
+        fetch('http://localhost:8000/admissions').then(r => r.json()), // আমরা এখান থেকেই চার্টের ডাটা বানাবো
+        fetch('http://localhost:8000/coaches').then(r => r.json()),
+      ])
 
-    setStats({
-      players: players.total,
-      admissions: admissions.total,
-      coaches: coaches.total,
-      expired: admissions.admissions.filter(a => a.status === 'expired').length,
-    })
+      // 2. স্ট্যাটস সেট করা
+      setStats({
+        players: playersRes.total,
+        admissions: admissionsRes.total,
+        coaches: coachesRes.total,
+        expired: admissionsRes.admissions.filter(a => a.status === 'expired').length,
+      })
 
-    setRecent(admissions.admissions.slice(0, 5))
-    setChartData(chart.chart)
+      setRecent(admissionsRes.admissions.slice(0, 5))
+
+      // 3. চার্টের জন্য ডাটা প্রসেস করা (নতুন অংশ)
+      // admissions এর লিস্ট থেকে তারিখ অনুযায়ী কাউন্ট বের করা হচ্ছে
+      const rawAdmissions = admissionsRes.admissions;
+      const chartMap = {};
+
+      rawAdmissions.forEach((item) => {
+        // start_date কে কি হিসেবে নিচ্ছি (যেমন: "2025-12-17")
+        const date = item.start_date;
+        if (chartMap[date]) {
+          chartMap[date] += 1;
+        } else {
+          chartMap[date] = 1;
+        }
+      });
+
+      // অবজেক্ট থেকে রিচার্টস এর জন্য অ্যারে বানানো
+      const processedChartData = Object.keys(chartMap).map((date) => ({
+        date: date,
+        admissions: chartMap[date],
+      }));
+
+      // ডাটা সর্ট করা (তারিখ অনুযায়ী সাজানো)
+      processedChartData.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      console.log("New Chart Data:", processedChartData); // কনসোলে চেক করুন
+      setChartData(processedChartData);
+
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   }
 
   return (
